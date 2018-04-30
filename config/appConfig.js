@@ -13,10 +13,10 @@ app.listen(port);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
-//configurar os cors
+//configurar os cors para nao ter erros na requisições
 app.use(function(req , res , next ){
   res.setHeader('Access-Control-Allow-Origin','*');
   res.setHeader('Acess-Control-Allow-Methods','GET','POST','PUT','DELETE');
-  rea.setHeader('Access-Control-Allow-Headers','X-Requested-With , content-type,Authorization');
+  res.setHeader('Access-Control-Allow-Headers','X-Requested-With , content-type,Authorization');
   next();
 })

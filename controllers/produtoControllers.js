@@ -21,7 +21,7 @@ exports.save = function(name , descricao , valor , callback){
 
 //listar todos os dados da aplicação
 exports.list = function(callback){
-  Produto.find({}, function(error , produto){
+  Produto.find({}, function(error , produtos){
     if(error){
       callback({error:'Nao foi possivel encontrar os produtos '});
     }else{
@@ -34,11 +34,14 @@ exports.list = function(callback){
 //apagar algum dado da aplicação
 exports.delete = function(id , callback ){
   Produto.findById(id , function(error , produto){
+      //se de error executa 
       if(error){
         callback({error:'Nao foi possivel excluir'});
       }else{
+
+        //se não tiver erro executa 
         produto.remove(function(error){
-          if(error){
+          if(!error){
             callback({reposta:'Produto excluido com sucesso'});
           }
         });
